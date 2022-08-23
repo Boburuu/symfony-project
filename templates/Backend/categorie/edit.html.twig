@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+  Edition catégorie
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <section class="container mt-4">
+    <div class="card p-3 w-50 mx-auto">
+      <h1 class="text-center">Editer {{ categorie.titre }}</h1>
+
+      {{ include('Backend/categorie/_form.html.twig', { button_label: 'Modif' }) }}
+
+      <div class="text-end">{{ include('Backend/categorie/_delete_form.html.twig') }}</div>
+    </div>
+
+    <a href="{{ path('app_categorie_index') }}" class="btn btn-secondary text-dark">Retour à la liste</a>
+  </section>
+{% endblock %}

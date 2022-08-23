@@ -2,7 +2,8 @@
     margin-top: 3em;
     display: inline-block;
     position: relative;
-    width: 100%;
+    flex: 0 0 auto;
+    width: 30%;
     margin-bottom: 30px;
     border-radius: $radius-default;
     color: #777777;
@@ -31,4 +32,5 @@
         padding: 15px 30px;
         margin-bottom: 0px;
     }
+    
 }

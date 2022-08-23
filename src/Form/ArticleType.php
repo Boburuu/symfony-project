@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Categorie;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -22,7 +25,24 @@ class ArticleType extends AbstractType
             ->add('content', TextareaType::class, [
                 'label' => 'Contenu:',
                 'required' => true
-            ]);
+            ])
+
+            ->add('categories',EntityType::class, [
+                'label' => 'Categories:',
+                'class' => Categorie::class,
+                'choice_label' => 'titre',
+                'multiple' => true,
+                'by_reference' => false, 
+                # Le $er abrevation de EntityRepository(attribut) en gros ont instencie Entity dans $er pour la reutiliser dans la fonction 
+                "query_builder" => function (EntityRepository $er){
+                    #Creer une requete sql en php, createQueryBuilder()-> permet de créer une nouvelle requête,
+                    return $er->createQueryBuilder('c')
+                    ->andWhere('c.enable = true')
+                    ->orderBy('c.titre', 'ASC');
+                },
+               
+
+            ] );
         // ->add('save', SubmitType::class, [
         //     'label' => 'CRÉER',
         // ]);

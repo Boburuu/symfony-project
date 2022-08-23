@@ -21,14 +21,17 @@
     "private": true,
     "config": {
         "commitizen": {
-          "path": "@commitlint/cz-commitlint"
+            "path": "@commitlint/cz-commitlint"
         }
-      },
+    },
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress",
-        "postinstall":  "husky install"
+        "postinstall": "husky install"
+    },
+    "dependencies": {
+        "axios": "^0.27.2"
     }
 }

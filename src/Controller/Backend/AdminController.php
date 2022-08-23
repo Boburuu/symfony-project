@@ -46,7 +46,7 @@ class AdminController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('', name: 'admin')]
+    #[Route('', name: 'admin')] //Défini un nom au chemin
     public function index(): Response
     {
         //Récupérer tous les Users

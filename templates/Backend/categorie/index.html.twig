@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+
+{% block Title %}
+{{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+  <section class="container mt-4">
+    <h1 class="text-center">Administration des Catégories</h1>
+    <div class="d-flex flex-wrap justify-content-between gap-2 mt-4">
+      {% for categorie in categories %}
+        <div class="blog-card mt-0">
+          <div class="blog-card-content">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <h2>{{ categorie.titre }}</h2>
+              </div>
+              <div class="col-md-6">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" value="{{ categorie.id }}" data-switch-active-tag {{ categorie.enable ? 'checked' }} />
+                  <label class="form-check-label">Actif</label>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+              <div class="col-md-6">
+                <a href="{{ path('app_categorie_edit', { id: categorie.id }) }}" class="btn btn-secondary">Modifier</a>
+              </div>
+              <div class="col-md-6">
+                {% include 'Backend/Categorie/_delete_form.html.twig' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <a href="{{ path('app_categorie_new') }}" class="btn btn-dark">Créer une Catégorie</a>
+  </section>
+{% endblock %}
