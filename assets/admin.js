@@ -1,5 +1,7 @@
 //Import sccs
 
-// Import Js 
+import "./styles/admin.scss";
 
-import './js/switchVisibilityComments';
+// Import Js
+
+import "./js/switchVisibilityComments";
