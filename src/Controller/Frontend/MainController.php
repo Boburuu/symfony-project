@@ -12,9 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MainController extends AbstractController
 {
-    public function __construct(ArticleRepository $repoArticle)
+    public function __construct(private ArticleRepository $repoArticle)
     {
-        $this->repoArticle = $repoArticle;
     }
 
     /**
@@ -35,7 +34,7 @@ class MainController extends AbstractController
         // ];
 
         // return $this->render('Home/index.html.twig', ['data' => $data]);
-        return $this->render('Home/index.html.twig', [
+        return $this->render('Frontend/Home/index.html.twig', [
             'articles' => $articles
         ]);
     }

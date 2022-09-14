@@ -2,10 +2,13 @@
 @import "./variables";
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
-// Import du fichier _structure.scss
+
+@import "~bootstrap-icons/font/bootstrap-icons.scss";
+
 @import "./structure";
 // Import Components
 @import "./Components/banner";
 @import "./Components/blog-card";
 @import "./Components/categories.scss";
+@import "./Components/compte.scss";
 

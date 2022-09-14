@@ -1,0 +1,43 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    Admin user |
+    {{parent()}}
+{% endblock %}
+
+{% block body %}
+    <section class="container mt-4">
+        <h1 class="text-center text-light">Admin des users</h1>
+            <table class="table mt-4">
+                <thead>
+                    <tr>
+                        <th class="text-light">Prénom</th>
+                        <th class="text-light">Nom</th>
+                        <th class="text-light">Username</th>
+                        <th class="text-light">Email</th>
+                        <th class="text-light">Age</th>
+                        <th class="text-light">Rôle</th>
+                        <th class="text-light">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td class="text-light">{{user.prenom}}</td>
+                        <td class="text-light">{{user.nom}}</td>
+                        <td class="text-light">{{user.username}}</td>
+                        <td class="text-light">{{user.email}}</td>
+                        <td class="text-light">{{user.age}}</td>
+                        {# Est un ternaire = ? user.roles|json_encode: ''}} #}
+                        <td class="text-light">{{user.roles ? user.roles|json_encode: ''}}</td>
+                        <td class="text-light">
+                            {% include "Backend/User/_action.html.twig" %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                
+                </tbody>
+            </table>
+    </section>
+
+{% endblock %}

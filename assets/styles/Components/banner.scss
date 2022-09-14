@@ -1,5 +1,5 @@
 .banner {
-    background-image: url("../../images/banner-single-creation-graphique.jpg");
+    background-image: url("../../images/Tucker-and-Dale.gif");
     background-size: cover;
     height: 60vh;
 
@@ -11,7 +11,7 @@
 
         .title {
         background-color: rgba(250, 217, 161, 0.55);
-        border-radius: $radius-default;
+        border-radius: $border-radius;
         padding: 1em;
         }
     }

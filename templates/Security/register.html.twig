@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+  Incription|
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <section class="container mt-4">
+    <div class="w-50 card mx-auto p-3">
+      <h1 class="text-center">S'inscrire</h1>
+      {{ form_start(form) }}
+      <div class="row">
+        <div class="col-md-6">{{ form_row(form.prenom) }}</div>
+        <div class="col-md-6">{{ form_row(form.nom) }}</div>
+      </div>
+      {{ form_row(form.imageFile) }}
+      <div class="row">
+        <div class="col-md-9">{{ form_row(form.username) }}</div>
+        <div class="col-md-3">{{ form_row(form.age) }}</div>
+      </div>
+      {{ form_row(form.email) }}
+      {{ form_row(form.password) }}
+      {{ form_row(form.ville) }}
+
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
+      </div>
+      {{ form_end(form) }}
+    </div>
+  </section>
+{% endblock %}

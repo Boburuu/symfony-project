@@ -22,7 +22,7 @@ class AppFixtures extends Fixture
         $user->setPrenom('Stef')
             ->setNom('BK')
             ->setAge(50)
-            ->setUsername('stefbk')
+            ->setUsername('Boburuu')
             ->setEmail('stef@stef.com')
             ->setPassword($this->hasher->hashPassword($user,'Mdp'))
             ->setRoles(["ROLE_ADMIN"])

@@ -14,7 +14,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[Vich\Uploadable]
 class Article
 {
-    #[ORM\Id]
+    #[ORM\Id] #ORM Gère les objets dans les bdd
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;

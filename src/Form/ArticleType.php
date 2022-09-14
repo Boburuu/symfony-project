@@ -45,7 +45,7 @@ class ArticleType extends AbstractType
                 'required' => false,
                 'download_uri' => false,
                 'image_uri' => true,
-                'label' => 'Image',
+                'label' => 'Image (format paysage) :',
             ])
 
             ->add('content', TextareaType::class, [
