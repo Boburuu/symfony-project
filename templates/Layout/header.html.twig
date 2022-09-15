@@ -40,12 +40,27 @@
             </ul>
           </div>
         {% endif %}
+        <div class="navbar-btn me-2">
+          <a href="{{ path('app.user.compte') }}" class="btn btn-secondary">
+            <i class="bi bi-person-badge-fill"></i>
+            compte
+          </a>
+        </div>
         <div class="ml-left ml-4">
-          <a href="{{ path('logout') }}" class="btn btn-danger">Se deconnecter</a>
+          <a href="{{ path('logout') }}" class="btn btn-secondary">Se deconnecter</a>
         </div>
       {% else %}
-        <div class="ml-left">
-          <a href="{{ path('login') }}" class="btn btn-secondary">Login</a>
+        <div class="navbar-btn me-2">
+          <a href="{{ path('login') }}" class="btn btn-secondary">
+            <i class="bi bi-box-arrow-in-right"></i>
+             Login
+          </a>
+        </div>
+        <div class="navbar-btn">
+          <a href="{{ path('register') }}" class="btn btn-secondary">
+            <i class="bi bi-person-plus"></i>
+             SignUp
+          </a>
         </div>
       {% endif %}
     </div>

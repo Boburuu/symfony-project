@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -96,6 +97,22 @@ class RegistrationFormType extends AbstractType
                 'download_uri' => false,
                 'image_uri' => true,
                 'label' => 'Image (format paysage) :',
+            ])
+            ->add('address', TextType::class, [
+
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Votre adresse',
+                ]
+            ])
+            ->add('zipCode', TextType::class, [
+
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Code postal',
+                ]
             ]);
     }
 
