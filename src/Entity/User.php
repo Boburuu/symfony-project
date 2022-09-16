@@ -160,6 +160,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             $this->imageName =$data['imageName'];
 
         }
+        public function __toString(): string
+        {
+           return ' $this->prenom $this->nom';
+        }
 
     public function getId(): ?int
     {

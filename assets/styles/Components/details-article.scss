@@ -1,0 +1,50 @@
+
+
+.article-main-content{
+    display: flex;
+    gap: 2rem;
+    
+
+    .left-column{
+        flex: 1 0 30%;
+        background-color: rgba(223, 223, 223, 0.844);
+        border-radius:$border-radius;
+        text-align: center;
+        color: black;
+
+        .sidebar-content{
+            display: block;
+            position: sticky;
+            top: 4rem;
+            height: 100vh;
+            overflow-y: scroll ;
+            
+            .categories-article{
+                .list-tag{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 1em 0.5rem;
+                    width: 80%;
+                    margin: auto;
+                .tag{
+                    background-color: #b47f7f;
+                    width: 30%;
+                    border-radius: 5px;
+                    box-shadow: 0px 1px 11px 3px rgba(97,0,0,0.42);
+                    margin-top: 1rem;
+                }
+                
+                }
+            }
+        }
+
+    }
+    .right-column{
+        flex: 1 0 65%;
+        background-color: rgba(223, 223, 223, 0.844);
+        border-radius:$border-radius;
+        text-align: center;
+        color: black;
+        
+    }
+}

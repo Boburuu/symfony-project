@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[Vich\Uploadable]
 class Article
@@ -24,6 +25,12 @@ class Article
 
     #[ORM\Column(type: 'text')]
     private $content;
+
+    
+    #[ORM\Column(length: 260, unique: true)]
+    #[Gedmo\Slug(fields: ['titre'])]
+    private $slug;
+
 
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
@@ -87,6 +94,11 @@ class Article
 
         return $this;
     }
+
+    public function getSlug()
+{
+   return $this->slug;
+}
 
     public function getUpdatedAt(): ?\DateTimeImmutable
     {

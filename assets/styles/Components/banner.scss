@@ -8,10 +8,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        
 
         .title {
-        background-color: rgba(250, 217, 161, 0.55);
+        background-color: rgba(238, 135, 135, 0.528);
         border-radius: $border-radius;
+        backdrop-filter: blur(2px);
         padding: 1em;
         }
     }
