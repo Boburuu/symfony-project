@@ -11,6 +11,7 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 import './js/headerFixed';
+import './js/swiperArticle';
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything
 require('bootstrap');
