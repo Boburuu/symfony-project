@@ -1,0 +1,11 @@
+{% if comments|length > 0 %}
+    <div class="show-comments mt-4">
+    {# Permet d'afficher "commentaires" au pluriels ou au singulier celon le nombre de comm #}
+        <h2>{{ comments|length > 1 ? 'Commentaires :' : "Commentaire :"}}</h2>
+        <div class="comments-list">
+            {% for comment in comments %}
+                {% include "Frontend/Article/_cardComment.html.twig" %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
