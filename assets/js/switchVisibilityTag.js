@@ -6,7 +6,7 @@ if(switchs){
     switchs.forEach((element)=>{
         element.addEventLister('change',() => {
             let tagId = element.value;
-            axios.get('/admin/categorie/switch/${tagId}');
+            axios.get(`/admin/categorie/switch/${tagId}`);
         });
     });
 }

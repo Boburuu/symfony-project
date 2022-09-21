@@ -39,20 +39,26 @@ class CommentRepository extends ServiceEntityRepository
         }
     }
 //transformation en sql ()
-    public function findActiveByArticle(int $articleId): array
+    public function findByArticle(int $articleId, bool $active = false): array
     {
         //création requêter
-        return $this->createQueryBuilder('c')
+        $query = $this->createQueryBuilder('c')
             //ici ont definie le nom d'un marqueur 
             ->andWhere('c.article = :articleId')
             //et là ont definie la valeur du marqueur 
-            ->setParameter('articleId', $articleId)
-            ->andWhere('c.active = :active')
-            ->setParameter('active', true)
+            ->setParameter('articleId', $articleId);
+
+            //Crétion de la condition (pour récupérer tout les commentaire seulement activer)
+            if($active){
+                $query->andWhere('c.active = :active')
+                ->setParameter('active', true);
+            }
+        
             //trier les commentaire créer par date(createdAt = date de modif)
-            ->orderBy('c.createdAt', 'DESC')
-            ->getQuery()
-            ->getResult();
+            $query->orderBy('c.createdAt', 'DESC');
+            
+            return $query->getQuery()
+                    ->getResult();
     }
 
     //    /**

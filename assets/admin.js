@@ -4,6 +4,7 @@ import "./styles/admin.scss";
 
 // Import Js
 
-import "./js/switchVisibilityComments";
+import "./js/switchVisibilityTag";
 import "./js/ckeditor"
 import "./js/addCollectionInput";
+import "./js/switchVisibilityComment";
