@@ -12,6 +12,9 @@ import './styles/app.scss';
 import './bootstrap';
 import './js/headerFixed';
 import './js/swiperArticle';
+import Filter from './js/filter'
+
+new Filter(document.querySelector('.js-filter'));
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything
 require('bootstrap');

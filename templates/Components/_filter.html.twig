@@ -1,0 +1,16 @@
+{{ form_start(form, {'attr':{'class': 'form-filter p-3 card js-filter-form is-loading'} }) }}
+<div class="loader">
+    <div class="spinner-grow text-danger js-loading" role="status" aria-hidden="true" style="display: none">
+    <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+{{ form_row(form.query)}}
+<h3 class="mb-2">Catégories :</h3>
+
+{{ form_row(form.categories, {'attr':{'class': 'd-flex flex-wrap gap-2'} })}}
+<h2 class="mb-2">Auteur :</h2>
+{{form_row(form.auteur, {'attr':{'class': 'd-flex flex-wrap gap-2'} })}}
+
+<button class="btn btn-primary" type="submit">Filtrer</button>
+
+{{ form_end(form)}}

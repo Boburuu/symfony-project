@@ -19,23 +19,19 @@ class MainController extends AbstractController
     /**
      * Affiche la Page d'Accueil
      *
-     * @Route("/", name="home")
+     
      * @return Response
      */
+    #[Route('', name: 'home')]
     public function index(): Response
     {
         //Récupère tous les Articles
-        $articles = $this->repoArticle->findAll();
-
-        // $data = [
-        //     'nom' => 'Pierre',
-        //     'age' => 25,
-        //     'ville' => 'Chambéry'
-        // ];
+        $articles = $this->repoArticle->findLatestArticleWithLimit(6);
 
         // return $this->render('Home/index.html.twig', ['data' => $data]);
         return $this->render('Frontend/Home/index.html.twig', [
-            'articles' => $articles
+            'articles' => $articles,
+            "currentPage" =>'home',
         ]);
     }
 }

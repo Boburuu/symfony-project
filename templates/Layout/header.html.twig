@@ -5,7 +5,8 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="{{ path('home') }}">Home</a>
+          <a class="nav-link {{currentPage is defined and currentPage == 'home' ? 'active'}}"  aria-current="page" href="{{ path('home') }}">Home</a>
+          <a class="nav-link {{currentPage is defined and currentPage == 'film' ? 'active'}}" aria-current="page" href="{{path('app.article.index')}}">Films</a>
           {# <a class="nav-link" href="#">Features</a>
                     <a class="nav-link" href="#">Pricing</a>
                     <a class="nav-link disabled">Disabled</a> #}

@@ -26,19 +26,9 @@ class ArticleType extends AbstractType
                 'required' => true
             ])
 
-            ->add('categories', EntityType::class, [
+            ->add('categories', CategorieAutocompleteField::class, [
                 'label' => 'Categories:',
-                'class' => Categorie::class,
-                'choice_label' => 'titre',
-                'multiple' => true,
-                'by_reference' => false,
-                # Le $er abrevation de EntityRepository(attribut) en gros ont instencie Entity dans $er pour la reutiliser dans la fonction 
-                "query_builder" => function (EntityRepository $er) {
-                    #Creer une requete sql en php, createQueryBuilder()-> permet de créer une nouvelle requête,
-                    return $er->createQueryBuilder('c')
-                        ->andWhere('c.enable = true')
-                        ->orderBy('c.titre', 'ASC');
-                },
+               
             ])
             // ->add('save', SubmitType::class, [
             //     'label' => 'CRÉER',

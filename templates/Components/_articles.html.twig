@@ -1,5 +1,8 @@
-<div class="blog-list">
 {% for article in articles %}
   {% include "Components/_card.html.twig" %}  
+  {% else %}
+    <div class="alert  w-100 text-center" role="alert">
+    <i class="bi bi-x-octagon"></i>
+    Il n'y à pas d'article correspondant
+    </div>
 {% endfor %}
-</div>

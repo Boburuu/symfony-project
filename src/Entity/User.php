@@ -20,7 +20,6 @@ use Symfony\Component\Validator\Constraints as Assert;
     fields: ['username'],
     message: 'Le username est déjà utilisés'
 )]
-
 #[UniqueEntity(
     fields: ['email'],
     message: 'L\'email est déjà utilisés'
@@ -166,7 +165,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
         public function __toString(): string
         {
-           return ' $this->prenom $this->nom';
+           return "$this->prenom $this->nom";
         }
 
     public function getId(): ?int

@@ -8,6 +8,9 @@
 {% block body %}
   {% include 'Frontend/Home/_banner.html.twig' %}
   <div class="container mt-">
-    {% include 'Components/_articles.html.twig' %}
+  <a href="{{path('app.article.index')}}" class="btn btn-secondary text-light">Voir plus</a>
+   <div class="blog-list ">
+        {% include "Components/_articles.html.twig" %}
+    </div>
   </div>
 {% endblock %}
