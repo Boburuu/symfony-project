@@ -25,7 +25,7 @@ class CategorieAutocompleteField extends AbstractType
                 ->andWhere('c.titre = ASC');
             },
 
-            'by-reference' =>false, 
+            'by_reference' =>false, 
             //'security' => 'ROLE_SOMETHING',
         ]);
     }

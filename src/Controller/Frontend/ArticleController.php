@@ -44,11 +44,11 @@ class ArticleController extends AbstractController
                 'sortable' =>$this->renderView('Components/_sortable.html.twig', [
                     'articles' => $articles
                 ]),
-                'count' => $this->renderView('Components/_sortable.html.twig', [
+                'count' => $this->renderView('Components/_count.html.twig', [
                     'articles' => $articles,
                 ]),
 
-                'pagination' => $this->renderView('Components/_sortable.html.twig', [
+                'pagination' => $this->renderView('Components/_pagination.html.twig', [
                     'articles' => $articles,
                 ]),
                 'page' => ceil($articles->getTotalItemCount() / $articles->getItemNumberPerPage()

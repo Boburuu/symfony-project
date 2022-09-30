@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="blog-list js-filter-content">
-                    {% include "Components/_articles.html.twig" %}
+                    {% include "Components/_articles.html.twig" with  {articles : articles} only %}
                 </div>
                     {% include "Components/_pagination.html.twig" %}
             </div>

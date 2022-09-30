@@ -37,6 +37,8 @@ class SearchData
      */
     private ?array $auteur = [];
 
+    private ?array $active = [];
+
     /**
      * Get the value of query
      *
@@ -129,6 +131,26 @@ class SearchData
     public function setPage(?int $page): self
     {
         $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of active
+     */ 
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set the value of active
+     *
+     * @return  self
+     */ 
+    public function setActive($active)
+    {
+        $this->active = $active;
 
         return $this;
     }
