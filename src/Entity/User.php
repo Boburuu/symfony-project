@@ -83,6 +83,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         max: 255,
         maxMessage: 'Maximum {{ limit }} caractères',
     )]
+    #[Assert\NotBlank([
+        'message' => 'Ce champs est requis'
+    ])]
     private $email;
 
     #[ORM\Column(type: 'string', length: 150, nullable: true)]

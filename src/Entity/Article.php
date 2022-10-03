@@ -11,8 +11,14 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
+#[UniqueEntity(
+    fields: ['titre'],
+    message: 'Ce titre est déjà utiilisé par un autre Article'
+)]
 class Article
 {
     #[ORM\Id] #ORM Gère les objets dans les bdd
@@ -20,10 +26,20 @@ class Article
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, unique: true )]
+    #[Assert\Length(
+        min: 5,
+        minMessage: 'Le titre de l\'article ne peut pas être inférieur à {{ limit }} caractères',
+        max: 255,
+        maxMessage: 'Le titre de l\'article ne peut pas dépasser {{ limit }} caractères'
+    )]
     private $titre;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\Length(
+        min: 10,
+        minMessage: 'Le contenue doit contenir minimum {{ limit }} caractères'
+    )]
     private $content;
 
     #[ORM\Column(length: 260, unique: true)]
