@@ -38,27 +38,28 @@ class CommentRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-//transformation en sql ()
+
+// transformation en sql ()
     public function findByArticle(int $articleId, bool $active = false): array
     {
-        //création requêter
+        // création requêter
         $query = $this->createQueryBuilder('c')
-            //ici ont definie le nom d'un marqueur 
+            // ici ont definie le nom d'un marqueur
             ->andWhere('c.article = :articleId')
-            //et là ont definie la valeur du marqueur 
+            // et là ont definie la valeur du marqueur
             ->setParameter('articleId', $articleId);
 
-            //Crétion de la condition (pour récupérer tout les commentaire seulement activer)
-            if($active){
-                $query->andWhere('c.active = :active')
-                ->setParameter('active', true);
-            }
-        
-            //trier les commentaire créer par date(createdAt = date de modif)
-            $query->orderBy('c.createdAt', 'DESC');
-            
-            return $query->getQuery()
-                    ->getResult();
+        // Crétion de la condition (pour récupérer tout les commentaire seulement activer)
+        if ($active) {
+            $query->andWhere('c.active = :active')
+            ->setParameter('active', true);
+        }
+
+        // trier les commentaire créer par date(createdAt = date de modif)
+        $query->orderBy('c.createdAt', 'DESC');
+
+        return $query->getQuery()
+                ->getResult();
     }
 
     //    /**

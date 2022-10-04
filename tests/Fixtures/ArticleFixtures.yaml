@@ -7,7 +7,6 @@ App\Entity\Article:
     titre (unique): "Article <current()>"
     content: <generateContent()>
     user: "@userAdmin"
-    categories: "<randomElements(@categorie{1..10})>"
     createdAt: <generateDate()>
     active: true
   
@@ -15,7 +14,6 @@ App\Entity\Article:
     titre (unique): "Article test"
     content: <generateContent()>
     user: "@userAdmin"
-    categories: "<randomElements(@categorie{1..10})>"
     createdAt: <generateDate()>
     active: true
   

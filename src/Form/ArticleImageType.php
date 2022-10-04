@@ -16,9 +16,9 @@ class ArticleImageType extends AbstractType
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'download_uri' => false,
-                'image_uri' => true, 
+                'image_uri' => true,
                 'asset_helper' => true,
-                'label' => 'Image'
+                'label' => 'Image',
             ])
 
         ;

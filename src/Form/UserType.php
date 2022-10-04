@@ -3,27 +3,24 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Form\FormBuilderInterface;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Security\Core\Security;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserType extends AbstractType
 {
-
     public function __construct(
         private Security $security
-
     ) {
     }
-
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -37,47 +34,47 @@ class UserType extends AbstractType
                         'label' => false,
                         'required' => true,
                         'attr' => [
-                            'placeholder' => 'Votre pseudo'
-                        ]
+                            'placeholder' => 'Votre pseudo',
+                        ],
                     ])
                     ->add('prenom', TextType::class, [
                         'label' => false,
                         'required' => true,
                         'attr' => [
-                            'placeholder' => 'Votre Prénom'
-                        ]
+                            'placeholder' => 'Votre Prénom',
+                        ],
                     ])
 
                     ->add('age', NumberType::class, [
                         'label' => false,
                         'required' => true,
                         'attr' => [
-                            'placeholder' => 'Votre Age'
-                        ]
+                            'placeholder' => 'Votre Age',
+                        ],
                     ])
 
                     ->add('email', EmailType::class, [
                         'label' => false,
                         'required' => true,
                         'attr' => [
-                            'placeholder' => 'Votre Mail'
-                        ]
+                            'placeholder' => 'Votre Mail',
+                        ],
                     ])
 
                     ->add('ville', TextType::class, [
                         'label' => false,
                         'required' => true,
                         'attr' => [
-                            'placeholder' => 'Votre Ville'
-                        ]
+                            'placeholder' => 'Votre Ville',
+                        ],
                     ])
 
                     ->add('nom', TextType::class, [
                         'label' => false,
                         'required' => true,
                         'attr' => [
-                            'placeholder' => 'Votre Nom'
-                        ]
+                            'placeholder' => 'Votre Nom',
+                        ],
                     ])
                     ->add('imageFile', VichImageType::class, [
                         'required' => false,
@@ -86,29 +83,27 @@ class UserType extends AbstractType
                         'label' => 'Image (format paysage) :',
                     ])
                     ->add('address', TextType::class, [
-                        
-                        'required'=>false,
-                        'label'=>false,
-                        'attr'=>[
-                            'placeholder'=> 'Votre adresse',
-                        ]
+                        'required' => false,
+                        'label' => false,
+                        'attr' => [
+                            'placeholder' => 'Votre adresse',
+                        ],
                     ])
                     ->add('zipCode', TextType::class, [
-                        
-                        'required'=>false,
-                        'label'=>false,
-                        'attr'=>[
-                            'placeholder'=> 'Code postal',
-                        ]
+                        'required' => false,
+                        'label' => false,
+                        'attr' => [
+                            'placeholder' => 'Code postal',
+                        ],
                     ]);
             }
 
-            if($this->security->isGranted('ROLE_ADMIN')){
+            if ($this->security->isGranted('ROLE_ADMIN')) {
                 $form
-                ->add('roles', ChoiceType::class,[
-                    'choices'=>[
+                ->add('roles', ChoiceType::class, [
+                    'choices' => [
                         'Editeur' => 'ROLE_EDITOR',
-                        'Admin' => "ROLE_ADMIN"
+                        'Admin' => 'ROLE_ADMIN',
                     ],
                     'label' => 'Roles',
                     'required' => true,
@@ -117,7 +112,6 @@ class UserType extends AbstractType
                 ]);
             }
         });
-
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -2,17 +2,13 @@
 
 namespace App\Entity;
 
-use App\Entity\User;
-use App\Entity\Categorie;
-use App\Entity\ArticleImage;
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArticleRepository;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\Common\Collections\Collection;
-use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[UniqueEntity(
@@ -21,12 +17,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 )]
 class Article
 {
-    #[ORM\Id] #ORM Gère les objets dans les bdd
+    #[ORM\Id] // ORM Gère les objets dans les bdd
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255, unique: true )]
+    #[ORM\Column(type: 'string', length: 255, unique: true)]
     #[Assert\Length(
         min: 5,
         minMessage: 'Le titre de l\'article ne peut pas être inférieur à {{ limit }} caractères',
@@ -61,7 +57,7 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\OneToMany(mappedBy: 'article', targetEntity: ArticleImage::class, orphanRemoval: true, cascade:["persist"])]
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: ArticleImage::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $images;
 
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comment::class, orphanRemoval: true)]
@@ -76,7 +72,7 @@ class Article
         $this->images = new ArrayCollection();
         $this->articleImages = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->commentss = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -163,7 +159,6 @@ class Article
 
         return $this;
     }
-
 
     public function getUser(): ?User
     {

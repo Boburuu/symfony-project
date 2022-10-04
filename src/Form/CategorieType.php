@@ -14,14 +14,14 @@ class CategorieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre', TextType::class,[
+            ->add('titre', TextType::class, [
               'label' => 'Titre',
-              'required' => true,  
+              'required' => true,
               'attr' => [
-                'placeholder' => 'Titre de la categorie'
-              ]
+                'placeholder' => 'Titre de la categorie',
+              ],
             ])
-            ->add('enable', CheckboxType::class,[
+            ->add('enable', CheckboxType::class, [
                 'label' => 'Active',
                 'required' => false,
             ])

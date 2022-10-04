@@ -2,12 +2,12 @@
 
 namespace App\Repository;
 
-use App\Entity\Article;
 use App\Data\SearchData;
-use Doctrine\Persistence\ManagerRegistry;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @extends ServiceEntityRepository<Article>
@@ -19,9 +19,8 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
  */
 class ArticleRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry, 
+    public function __construct(ManagerRegistry $registry,
     private PaginatorInterface $paginator)
-    
     {
         parent::__construct($registry, Article::class);
     }
@@ -44,20 +43,19 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
-        //FUNCTION QUI PERMET D'afficher les 6 derniers articles
-    
-    /**
-     * Function to search latest psots witth limit
-     * @param integer $limit number of max results in query
-     * @return array
-     * 
-     */
-    
-    
-        public function findLatestArticleWithLimit(int $limit):array
-    {
+        // FUNCTION QUI PERMET D'afficher les 6 derniers articles
+
+        /**
+         * Function to search latest psots witth limit.
+         *
+         * @param int $limit number of max results in query
+         *
+         * @return array
+         */
+        public function findLatestArticleWithLimit(int $limit): array
+        {
             return $this->createQueryBuilder('a')
-            ->select('a','u', 'i')
+            ->select('a', 'u', 'i')
             ->join('a.user', 'u')
             ->leftJoin('a.images', 'i')
             ->andWhere('a.active = true')
@@ -65,66 +63,54 @@ class ArticleRepository extends ServiceEntityRepository
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
-    }
-
-
+        }
 
     /*
-    Function 
-    
-    */
+        Function
+
+        */
 
         public function findSearchData(SearchData $search, bool $active = true): PaginationInterface
         {
             $query = $this->createQueryBuilder('a')
-            ->select('a','u','c','co', 'i')
+            ->select('a', 'u', 'c', 'co', 'i')
                 ->join('a.user', 'u')
                 ->leftJoin('a.categories', 'c')
-                ->leftJoin('a.comments','co')
+                ->leftJoin('a.comments', 'co')
                 ->leftJoin('a.images', 'i');
 
-
-            if($active){
+            if ($active) {
                 $query->andWhere('a.active = true');
-            }else{
-                if(!empty($search->getActive())) {
+            } else {
+                if (!empty($search->getActive())) {
                     $query->andWhere('a.active IN (:active)')
                     ->setParameter('active', $search->getActive());
                 }
             }
-            
 
-            if(!empty($search->getQuery())){
-                $query= $query->andWhere('a.titre LIKE :titre OR a.content LIKE :titre')
+            if (!empty($search->getQuery())) {
+                $query = $query->andWhere('a.titre LIKE :titre OR a.content LIKE :titre')
                     ->setParameter('titre', "%{$search->getQuery()}%");
             }
 
-            if(!empty($search->getCategories())){
-                $query= $query->andWhere('c.id  IN (:tags)')
+            if (!empty($search->getCategories())) {
+                $query = $query->andWhere('c.id  IN (:tags)')
                 ->setParameter('tags', $search->getCategories());
             }
 
-            if(!empty($search->getAuteur())){
-                $query= $query->andWhere('u.id  IN (:users)')
+            if (!empty($search->getAuteur())) {
+                $query = $query->andWhere('u.id  IN (:users)')
                 ->setParameter('users', $search->getAuteur());
             }
 
             $query = $query->getQuery();
 
             return $this->paginator->paginate(
-                $query, /* La requete pas le result  */
-                $search->getPage(), /*Numero de page */
-                6,  /*Nombre d'element/page*/
+                $query, /* La requete pas le result */
+                $search->getPage(), /* Numero de page */
+                6,  /* Nombre d'element/page */
             );
         }
-
-
-
-
-
-
-
-
 
 //    /**
 //     * @return Article[] Returns an array of Article objects

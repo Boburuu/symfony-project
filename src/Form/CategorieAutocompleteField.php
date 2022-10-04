@@ -19,14 +19,14 @@ class CategorieAutocompleteField extends AbstractType
             'placeholder' => 'Choose a Categorie',
             'choice_label' => 'titre',
             'multiple' => true,
-            'query_builder' => function(CategorieRepository $categorieRepository) {
+            'query_builder' => function (CategorieRepository $categorieRepository) {
                 return $categorieRepository->createQueryBuilder('c')
                 ->andWhere('c.enable = true')
                 ->andWhere('c.titre = ASC');
             },
 
-            'by_reference' =>false, 
-            //'security' => 'ROLE_SOMETHING',
+            'by_reference' => false,
+            // 'security' => 'ROLE_SOMETHING',
         ]);
     }
 

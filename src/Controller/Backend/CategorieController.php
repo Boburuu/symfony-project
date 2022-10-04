@@ -40,7 +40,6 @@ class CategorieController extends AbstractController
         ]);
     }
 
-
     #[Route('/{id}/edit', name: 'app_categorie_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Categorie $categorie, CategorieRepository $categorieRepository): Response
     {
@@ -68,18 +67,18 @@ class CategorieController extends AbstractController
 
         return $this->redirectToRoute('app_categorie_index', [], Response::HTTP_SEE_OTHER);
     }
+
     #[Route('/switch/categorie{id}', name: 'app_categorie_visibility', methods: ['GET'])]
     public function switchVisibilityTag(?Categorie $categorie, CategorieRepository $categorieRepository)
     {
-        if(!$categorie instanceof Categorie) {
+        if (!$categorie instanceof Categorie) {
             return new Response('Categorie non trouvée', 404);
         }
-        else{
-            // $categorie->isEnable() ? $categorie->setEnable(false) : $categorie->setEnable(true);
-            $categorie->setEnable(!$categorie->isEnable());
-            $categorieRepository->add($categorie, true);
 
-            return new Response('Visibility changed', 201);
-        }
+        // $categorie->isEnable() ? $categorie->setEnable(false) : $categorie->setEnable(true);
+        $categorie->setEnable(!$categorie->isEnable());
+        $categorieRepository->add($categorie, true);
+
+        return new Response('Visibility changed', 201);
     }
 }
